@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Week 7 - Day 3</title>
     <script src="index.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <section>
-      <output style="display: flex; flex-wrap: wrap" id="output"></output>
+      <output class="flex flex-wrap mb-2" id="output"></output>
     </section>
     <section>
-      <form id="inputForm">
-        <label class="flex">
+      <form id="inputForm" class="max-w-30">
+        <label class="flex flex-col mb-2">
           Pokemon Number
           <input type="number" name="inputNum" id="inputNum" />
         </label>
 
-        <label class="flex">
+        <label class="flex flex-col mb-2">
           Generation
           <select name="generation" id="generation">
             <option value="generation-i">Generation 1</option>

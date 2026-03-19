@@ -5,13 +5,22 @@ const inputNum = document.getElementById("inputNum");
 
 async function main() {
   form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    renderLoading();
-    const pokeNum = parseInt(e.target.inputNum.value);
-    await getPokemonAPI(pokeNum, e.target.generation.value);
-    inputNum.value = "";
-    selectBox.value = "generation-i";
-    removeLoading();
+    try {
+      e.preventDefault();
+      renderLoading();
+      const pokeNum = parseInt(e.target.inputNum.value);
+      if (!pokeNum) {
+        throw new Error("Please insert a valid number");
+      }
+      await getPokemonAPI(pokeNum, e.target.generation.value);
+      removeLoading();
+      inputNum.value = "";
+      selectBox.value = "generation-i";
+    } catch (err) {
+      removeLoading();
+      renderError(err);
+      console.log(err);
+    }
   });
 }
 
@@ -21,6 +30,8 @@ async function getPokemonAPI(number, generation) {
     if (res.ok) {
       const data = await res.json();
       renderPokemon(data, generation);
+    } else {
+      throw new Error("Something went wrong, please try again.");
     }
   } catch (error) {
     renderError(error);

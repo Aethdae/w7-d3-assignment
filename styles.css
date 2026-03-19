@@ -1,0 +1,19 @@
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.max-w-30 {
+  max-width: 30%;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
